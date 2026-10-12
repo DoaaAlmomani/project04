@@ -15,15 +15,10 @@ It is built from scratch, without frameworks, templates, or UI libraries.
 HTML5, CSS3, JavaScript (ES6+), Git.
 
 ## Project Structure
-```
-ex00/
-├── index.html
-├── style.css
-├── script.js
-├── assets/
-│   └── profile.jpg
-└── README.md
-```
+- `index.html`: the structure of the page and all its sections.
+- `style.css`: colors, layout, dark/light themes, and the responsive design.
+- `script.js`: the theme switcher button and the contact form.
+- `assets/`: the images used in the page (my profile photo).
 
 ## How to Run
 Open `index.html` in any modern web browser. No installation is required.
