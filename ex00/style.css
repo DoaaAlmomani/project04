@@ -1,0 +1,470 @@
+/* ===== 1. Theme variables ===== */
+:root {
+  --bg: #f8f8fb;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #5b6475;
+  --accent: #5b4bb0;
+  --accent-soft: #ecebf7;
+  --on-accent: #ffffff;
+  --border: #e2e2ec;
+  --shadow: 0 1px 3px rgba(20, 20, 40, 0.08);
+  --radius: 10px;
+}
+
+/* Dark theme: same variable names, new values */
+[data-theme="dark"] {
+  --bg: #1f1b2b;
+  --surface: #2a2538;
+  --text: #ece7f5;
+  --muted: #a69fb8;
+  --accent: #b9a7e8;
+  --accent-soft: #3b3250;
+  --on-accent: #1f1b2b;
+  --border: #3a3450;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== 2. Reset & base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== 3. Navbar ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.4s ease;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.theme-btn {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ===== 4. Sections ===== */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.section-title {
+  position: relative;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-bottom: 12px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -1px;
+  width: 56px;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+/* ===== 5. About ===== */
+.about {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.about-photo {
+  flex: 0 0 240px;
+}
+
+.about-photo img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background-color: var(--accent-soft);
+}
+
+/* Two columns: main text (left) + contact info (right) */
+.about-text {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.about-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-main h1 {
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+.about-main h2 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.about-main p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* ===== 6. Buttons ===== */
+.btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  padding: 11px 26px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+/* ===== 7. Skills ===== */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, background-color 0.4s ease;
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+}
+
+/* ===== 8. Projects ===== */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 280px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, border-color 0.3s ease, background-color 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.project-tag {
+  align-self: flex-start;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.project-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.project-more {
+  margin-top: auto;
+  padding-top: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ===== 9. Hobbies ===== */
+.hobbies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hobby-card {
+  background-color: var(--accent-soft);
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background-color 0.4s ease;
+}
+
+/* ===== 10. Contact info (top right of the About section) ===== */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   /* push every row to the right edge */
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.contact-item {
+  display: inline-flex;
+  flex-direction: row-reverse;   /* icon (first in HTML) goes to the right, text to its left */
+  align-items: center;
+  gap: 10px;
+  text-align: right;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+a.contact-item:hover {
+  color: var(--accent);
+}
+
+.contact-item .icon {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+/* ===== 11. Contact form ===== */
+.contact-form {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--surface);
+  padding: 44px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: background-color 0.4s ease;
+}
+
+.contact-form label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: inherit;
+  font-size: 1.05rem;
+  padding: 15px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
+
+.contact-form textarea {
+  min-height: 200px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--accent);
+  border-color: transparent;
+}
+
+.contact-form .btn {
+  margin-top: 20px;
+  align-self: flex-start;
+  padding: 13px 34px;
+}
+
+.form-status {
+  color: var(--accent);
+  font-weight: 600;
+  min-height: 1.5em;
+}
+
+/* ===== 12. Footer ===== */
+.site-footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ===== 13. Responsive (media queries) ===== */
+@media (max-width: 900px) {
+  /* Not enough width for two columns: contact info goes under the text */
+  .about-text {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .about-main {
+    width: 100%;
+  }
+
+  .contact-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+  }
+
+  .contact-item {
+    flex-direction: row;   /* icon back on the left of its text */
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+    gap: 28px;
+  }
+
+  .about-photo {
+    flex: none;
+  }
+
+  .about-photo img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about-text {
+    align-items: center;
+  }
+
+  .about-main h1 {
+    font-size: 2rem;
+  }
+
+  .contact-info {
+    justify-content: center;
+  }
+
+  .section {
+    padding: 48px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form {
+    padding: 24px;
+  }
+}
