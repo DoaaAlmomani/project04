@@ -1,7 +1,42 @@
-// ===== Profile photo switcher =====
+// ===== Theme switcher =====
+// 1. Select the elements we need from the DOM
+const themeButton = document.getElementById("theme-toggle");
+const root = document.documentElement; // the <html> element
+
+// 2. Callback function: runs every time the button is clicked
+function toggleTheme() {
+  const currentTheme = root.getAttribute("data-theme");
+
+  if (currentTheme === "dark") {
+    root.setAttribute("data-theme", "light");
+    themeButton.textContent = "Dark mode";
+  } else {
+    root.setAttribute("data-theme", "dark");
+    themeButton.textContent = "Light mode";
+  }
+}
+
+// 3. Attach the event listener: user click -> event fires -> toggleTheme runs
+themeButton.addEventListener("click", toggleTheme);
+
+// ===== Contact form =====
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+
+function handleSubmit(event) {
+  event.preventDefault(); // stop the page from reloading
+  const name = document.getElementById("name").value;
+  formStatus.textContent = "Thank you, " + name + ". Your message was received.";
+  contactForm.reset();
+}
+
+contactForm.addEventListener("submit", handleSubmit);
+
+// ===== Bounce 01: Profile photo switcher =====
 const profilePhoto = document.getElementById("profile-photo");
 const photoButtons = document.querySelectorAll(".photo-btn");
 
+// The data lives in an object, separate from the logic
 const photos = {
   casual: {
     src: "assets/casual.jpg",
@@ -13,40 +48,32 @@ const photos = {
   }
 };
 
-let currentStyle = "casual"; // which photo is displayed now
-let isSwitching = false;     // true while a switch is in progress
-
 // Fade the photo back in once the new image has loaded (or failed to load)
 function showPhoto() {
   profilePhoto.classList.remove("fade-out");
-  isSwitching = false;
 }
 
-// Callback: runs every time a button is clicked
 function switchPhoto(event) {
   const clickedButton = event.currentTarget;
-  const style = clickedButton.dataset.photo;
+  const selected = photos[clickedButton.dataset.photo];
 
-  // Ignore the click if this photo is already shown or a switch is running
-  if (isSwitching || style === currentStyle) {
+  // Do nothing if this photo is already displayed
+  if (profilePhoto.getAttribute("src") === selected.src) {
     return;
   }
 
-  isSwitching = true;
-  currentStyle = style;
-
-  // Highlight the clicked button
+  // Update the active button
   photoButtons.forEach(function (button) {
     const isActive = button === clickedButton;
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", isActive);
   });
 
-  // 1) fade out (CSS transition, 0.3s)  2) swap src and alt  3) fade in on "load"
+  // 1) fade out (CSS transition, 0.3s)  2) swap src and alt  3) fade in
   profilePhoto.classList.add("fade-out");
   setTimeout(function () {
-    profilePhoto.src = photos[style].src;
-    profilePhoto.alt = photos[style].alt;
+    profilePhoto.src = selected.src;
+    profilePhoto.alt = selected.alt;
   }, 300);
 }
 
