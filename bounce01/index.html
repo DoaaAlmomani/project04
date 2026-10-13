@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Photo Switcher</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="card">
+    <img id="profile-photo" class="profile-photo" src="assets/casual.jpg" alt="Duaa Almomani, casual photo">
+
+
+    <div class="photo-switcher" role="group" aria-label="Choose profile photo style">
+      <button type="button" class="photo-btn active" data-photo="casual" aria-pressed="true">Casual</button>
+      <button type="button" class="photo-btn" data-photo="professional" aria-pressed="false">Professional</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
